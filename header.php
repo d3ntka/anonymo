@@ -30,15 +30,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<a class="skip-link sr-only sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'understrap' ); ?></a>
 
-		<nav id="main-nav" class="navbar navbar-expand-md navbar-dark bg-primary" aria-labelledby="main-nav-label">
+		<nav id="main-nav" class="navbar navbar-expand-md navbar-dark" aria-labelledby="main-nav-label">
+			<div class="container-fluid">
 
 			<h2 id="main-nav-label" class="sr-only">
 				<?php esc_html_e( 'Main Navigation', 'understrap' ); ?>
 			</h2>
 
-		<?php if ( 'container' === $container ) : ?>
-			<div class="container">
-		<?php endif; ?>
 
 					<!-- Your site title as branding in the menu -->
 					<?php if ( ! has_custom_logo() ) { ?>
@@ -79,10 +77,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 					)
 				);
 				?>
-			<?php if ( 'container' === $container ) : ?>
-			</div><!-- .container -->
-			<?php endif; ?>
 
+
+			</div>
 		</nav><!-- .site-navigation -->
 
 	</div><!-- #wrapper-navbar end -->

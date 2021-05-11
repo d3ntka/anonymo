@@ -1,1 +1,135 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+
+
+
+html{
+  font-family: 'Raleway', sans-serif;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  transition: all 0.3s ease-in-out;
+  transform: rotate3d(0,0,0,0deg);
+  @include media-breakpoint-down(md) {
+    font-size: 50%;
+  }
+}
+
+
+body{
+  font-family: 'Raleway', sans-serif;
+  transition: all 0.3s ease-in-out;
+  transform: rotate3d(0,0,0,0deg);
+  font-size: 1.3rem;
+  overflow-x: hidden;
+  @include media-breakpoint-only(xs) {
+    text-align: center;
+  }
+
+
+}
+
+// a{
+//   color: $text-primary;
+// }
+
+p{
+  color: $text-gray;
+  font-size: 1.3rem;
+}
+h1{
+  font-size: 7rem;
+  font-weight: 800;
+}
+// =================== NAVBAR =================
+.navbar{
+  background: rgb(8,8,8);
+  background: linear-gradient(180deg, rgba(8,8,8,1) 0%, rgba(0,0,0,0) 100%);
+  position: relative;
+  z-index: 800;
+}
+
+.nav-link{
+  font-size: 1.4rem;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: $link-color!important;
+  text-decoration: $link-hover-decoration!important;
+  &:hover{
+    color: $link-hover-color!important;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+.navbar{
+  padding: 7rem 0;
+}
+
+// ============+==== MAIN CSS ===============
+
+.main_page{
+  height: 90rem;
+  background-image: url("../img/main_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  margin-top: -14rem;
+
+}
+.main_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 12rem;
+  padding: 25rem 0;
+  font-weight: 800;
+  // z-index: 150;
+  span{
+    color: $secondary;
+  }
+  &--text{
+    line-height: 12rem;
+    position: relative;
+    z-index: 200;
+  }
+}
+// .sygnet_bg_white{
+  .main_title::before{
+  content: "";
+  // background-image: url("../img/sygnet.svg");
+  // background-repeat: no-repeat;
+  width:659.119px;
+  height:503.6px;
+  background-size: 100%;
+  color: $secondary;
+  position: absolute;
+  z-index: 100;
+  opacity: 0.2;
+
+  }
+
+
+
+.sygnet_bg{
+  mask: url("../img/sygnet.svg");
+  width:659.119px;
+  height:503.6px;
+  background-size: cover;
+  // background-color: $white;
+  position: absolute;
+  z-index: 100;
+  opacity: 0.2;
+  }
+
+.sygnet_bg_white{
+  @extend .sygnet_bg;
+  background-color: $white;
+}

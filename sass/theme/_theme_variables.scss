@@ -3,4 +3,28 @@
 // Just copy a variable from src/sass/bootstrap4/_variables.scss, paste it here and edit the value.
 
 
-$primary: #5533ff; // Thats a sample how you could change a BootStrap variable.
+$primary: #080808; // Thats a sample how you could change a BootStrap variable.
+$secondary: #D20023;
+$text-gray: #CECECE;
+$text-primary: #fff;
+
+
+$body-bg: $primary;
+$body-color: #fff;
+$link-color: $text-primary;
+$link-hover-color: $secondary;
+$link-hover-decoration: none;
+
+.container-fluid{
+     padding-left: 4rem!important;
+     padding-right: 4rem!important;
+
+  @media (min-width: 768px) {
+    padding-left: 10rem!important;
+    padding-right: 10rem!important;
+  }
+  @media (min-width: 1200px) {
+     padding-left: 14rem!important;
+     padding-right: 14rem!important;
+  }
+}
