@@ -22,7 +22,7 @@ $stroke: 2px;
 	// letter-spacing: .5em;
 	/* Animation provies a slight random skew. Check bottom of doc
 	for more information on how to random skew. */
-	animation: glitch-skew 1s infinite linear alternate-reverse;
+	animation: glitch-skew 3s infinite linear alternate-reverse;
 
 	// Creates a copy before our text.
 	&::before{
@@ -50,7 +50,7 @@ $stroke: 2px;
 	}
 }
 
-/* Creates an animation with 20 steaps. For each step, it calculates
+/* Creates an animation with 20 steps. For each step, it calculates
 a percentage for the specific step. It then generates a random clip
 box to be used for the random glitch effect. Also adds a very subtle
 skew to change the 'thickness' of the glitch.*/
@@ -80,7 +80,127 @@ skew to change the 'thickness' of the glitch.*/
   $steps: 10;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      transform: skew((random(10) - 5) + deg);
+      transform: skew((random(7) - 5) + deg);
     }
   }
 }
+
+
+
+
+.glitch_sygnet {
+	// -webkit-filter: url("../glitch.svg#glitch");
+	// filter: url("../glitch.svg#glitch");
+	-webkit-filter: url("#glitch");
+	filter: url("#glitch");
+}
+.glitch_sygnet img {
+	height: auto;
+	max-width: 100%;
+}
+
+.glitch_this {
+	-webkit-filter: url("#glitch");
+	filter: url("#glitch");
+}
+.glitch_this:hover {
+	-webkit-filter: none;
+	filter: none;
+}
+.glitch_this img {
+	height: auto;
+	max-width: 100%;
+}
+
+.glitch_link {
+  -webkit-filter: none;
+  filter: none;
+}
+.glitch_link:hover {
+  -webkit-filter: url("#glitch");
+  filter: url("#glitch");
+}
+
+
+
+
+
+
+
+// ============== GLITCH =============
+
+.glitch2-wrap{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+  .glitch{
+		color: #FFF;
+		// -webkit-text-stroke: 1px white
+		// text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF
+		-webkit-font-smoothing: antialiased;
+		font-weight: 800;
+		font-family: 'Raleway';
+		position: relative;
+		font-size: 100px;
+		padding: 30px;
+	}
+
+  .glitch::before, .glitch::after{
+		padding: 30px;
+		color: white;
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: black;
+		overflow: hidden;
+		top: 0;
+
+	}
+
+  .glitch::before{
+		left: 3px;
+		text-shadow: -2px 0 red;
+		animation-name: glitch-animation-1;
+		animation-duration: 2s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-direction: reverse-alternate;
+	}
+
+  .glitch::after{
+		left: -3px;
+		text-shadow: -3px 0 blue;
+		animation-name: glitch-animation-2;
+		animation-duration: 2s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-direction: reverse-alternate;
+	}
+}
+@keyframes glitch-animation-1{
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(150)+px, 350px, random(150)+px, 30px)
+		}
+	}
+}
+
+@keyframes glitch-animation-2{
+  $steps: 20;
+  @for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(150)+px, 350px, random(150)+px, 30px)
+		}
+	}
+}
+
+
+// +++++++++++++++++++++++++++++++++++
