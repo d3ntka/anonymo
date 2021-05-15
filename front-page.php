@@ -235,12 +235,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row ">
 
 
-			<div class="col-md-6">
+			<div class="col-md-6 d-none d-md-block">
+				<span class="red-square--smol"></span>
 				<div class="about__bg--2">
 					<span class="let-m--l1"></span>
 					<span class="let-o--l2"></span>
 					<span class="let-y--l1"></span>
-					<span class="red-square--smol"></span>
 					<span class="elem_6x--loc3"></span>
 
 				</div>
@@ -260,6 +260,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <section class="team">
 	<span class="let-n--l2"></span>
+	<span class="let-m--l2"></span>
+	<span class="lil-sygnet--l1"></span>
 	<div class="container-fluid pt-30">
 		<div class="row">
 			<div class="col-auto aligncenter">
@@ -271,6 +273,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<p>Ci wspaniali gracze tworzą trzon naszej organizacji. To właśnie z nimi przeżywacie największe esportowe emocje. Poznajcie ich dokładniej i koniecznie wpadnijcie na przypięte social media!</p>
 			</div>
 		</div>
+	</div>
 
 		<div class="row d-flex justify-content-center pb-20">
 			<div class="col-auto">
@@ -336,11 +339,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div>
 
 
-	</div>
 </section>
 
 <section class="streamers">
 	<div class="container-fluid streamers--wrapper" id="streamers" >
+		<span class="let-a--l2"></span>
+		<span class="let-n--l3"></span>
+		<span class="let-o--l3"></span>
+		<span class="let-y--l2"></span>
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-10 col-xl-5">
 				<div class="streamers__circles-cont">
@@ -361,13 +367,37 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<h1 class="glitch" data-text="STRAEMREZY">STREAMERZY</h1>
 					<p>Światła, kamera, akcja! Drużyna pozytywnie zakręconych influencerów znakomicie dopełnia obraz naszej organizacji. Bez nich nie mogłoby powstać wiele ciekawych, a czasem nawet szalonych projektów. Mamy nadzieję, że wszystkich już od dawna obserwujesz. A jeśli nie to nic straconego, wszystkie ich sociale znajdziesz poniżej!</p>
 					<br><br>
-					<a class="links" href="#"><span>zobacz więcej</span></a>
+					<a class="links" href="https://www.twitch.tv/team/anonymoesports"><span>zobacz więcej</span></a>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+
+<section class="shop-section pt-10">
+	<div class="container-fluid shop">
+		<div class="row d-flex justify-content-center align-items-center">
+			<div class="col-md-6 mx-auto">
+				<div class="shop__content">
+					<h1 class="glitch" data-text="Skeep">Sklep</h1>
+					<p>Światła, kamera, akcja! Drużyna pozytywnie zakręconych influencerów znakomicie dopełnia obraz naszej organizacji. Bez nich nie mogłoby powstać wiele ciekawych, a czasem nawet szalonych projektów. Mamy nadzieję, że wszystkich już od dawna obserwujesz. A jeśli nie to nic straconego, wszystkie ich sociale znajdziesz poniżej!</p>
+					<br><br>
+					<a class="links" href="https://anonymo.com/shop"><span>zobacz więcej</span></a>
+
+				</div>
+			</div>
+		</div>
+		<span class="let-n--l4"></span>
+		<span class="let-o--l4"></span>
+		<span class="let-y--l3"></span>
+		<span class="lil-sygnet--l2"></span>
+		<span class="elem_6x--lshop"></span>
+		<span class="red-square--lshop"></span>
+		<span class="red-square--smolshop"></span>
+	</div>
+
+</section>
 
 <?php
 get_footer();

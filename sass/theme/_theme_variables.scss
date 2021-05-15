@@ -16,8 +16,9 @@ $link-color: $text-primary;
 $link-hover-decoration: none;
 
 .container-fluid{
-     padding-left: 4rem!important;
-     padding-right: 4rem!important;
+  max-width: 2000px;
+  padding-left: 4rem!important;
+  padding-right: 4rem!important;
 
   @media (min-width: 768px) {
     padding-left: 10rem!important;

@@ -17,6 +17,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <footer class="main-footer" id="colophon">
 <span class="red-square--big"></span>
+<span class="elem_6x--l4"></span>
+<span class="let-m--l3"></span>
+<span class="let-o--l5"></span>
 
 <div class="<?php echo esc_attr( $container ); ?>">
 
@@ -73,16 +76,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <div class="row main-footer__menu">
 	<div class="col-auto">
-		<a href="#">O nas</a>
+		<a href="#about">O nas</a>
 	</div>
 	<div class="col-auto">
-		<a href="#">Drużyny</a>
+		<a href="#team">Drużyny</a>
 	</div>
 	<div class="col-auto">
-		<a href="#">Streamerzy</a>
+		<a href="#streamers">Streamerzy</a>
 	</div>
 	<div class="col-auto">
-		<a href="#">Sklep</a>
+		<a href="https://anonymo.com/shop">Sklep</a>
 	</div>
 	<div class="col-auto d-none">
 		<a href="#">Media Zone</a>
@@ -90,7 +93,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div class="col-auto d-none">
 		<a href="#">FAQ</a>
 	</div>
-	<div class="col-auto">
+	<div class="col-auto d-none">
 		<a href="#">Kontakt</a>
 	</div>
 </div>
@@ -108,7 +111,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </footer><!-- #colophon -->
 
 </div><!-- #page we need this extra closing tag here -->
-<div class="" style="height:0;">
+<div class="" style="height:0;overflow:hidden;">
 	<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 		<defs>
 			<filter id="glitch" x="0" y="0">
