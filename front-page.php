@@ -2,6 +2,8 @@
 /**
  * The main template file
  *
+ * Template Name: Front-page
+ *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
@@ -59,39 +61,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</div>
 					</div>
 					<div class="row d-flex justify-content-start align-items-center">
-						<?php if ( have_rows( 'sociale' ) ) : ?>
-							<?php while ( have_rows( 'sociale' ) ) :
-								the_row(); ?>
-								<div class="col">
-									<?php if ( $social1 = get_sub_field( 'social1' ) ) : ?>
-										<a href="<?php echo esc_html( $social1 ); ?>">
-											<span class="logo_fb"></span>
-										</a>
-									<?php endif; ?>
-								</div>
-								<div class="col">
-									<?php if ( $social2 = get_sub_field( 'social2' ) ) : ?>
-										<a href="<?php echo esc_html( $social2 ); ?>">
-											<span class="logo_twitter"></span>
-										</a>
-									<?php endif; ?>
-								</div>
-								<div class="col">
-									<?php if ( $social3 = get_sub_field( 'social3' ) ) : ?>
-										<a href="<?php echo esc_html( $social3 ); ?>">
-											<span class="logo_instagram"></span>
-										</a>
-									<?php endif; ?>
-								</div>
-								<div class="col">
-									<?php if ( $social4 = get_sub_field( 'social4' ) ) : ?>
-										<a href="<?php echo esc_html( $social4 ); ?>">
-											<span class="logo_twitch"></span>
-										</a>
-									<?php endif; ?>
-								</div>
-							<?php endwhile; ?>
-						<?php endif; ?>
+						<div class="col">
+								<a href="<?php the_field('social1', 'option'); ?>">
+									<span class="logo_fb"></span>
+								</a>
+						</div>
+						<div class="col">
+								<a href="<?php the_field('social2', 'option'); ?>">
+									<span class="logo_twitter"></span>
+								</a>
+						</div>
+						<div class="col">
+							<a href="<?php the_field('social3', 'option'); ?>">
+									<span class="logo_instagram"></span>
+								</a>
+						</div>
+						<div class="col">
+							<a href="<?php the_field('social4', 'option'); ?>">
+									<span class="logo_twitch"></span>
+								</a>
+						</div>
 					</div>
 				</div>
 
@@ -215,7 +204,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 		  	<div class="about__sectionA--text mx-auto my-auto">
 						<h1 class="glitch" data-text="O ANS">O Nas</h1>
 						<p>Anonymo Esports to powiew świeżego powietrza na polskiej scenie. Już od dnia powstania staramy się na niej jak najmocniej namieszać - oczywiście w tym pozytywnym kontekście! </p>
-					</div>
+						<br><br>
+						<a href="#" class="links"><span>Info na bieżąco!</span></a>
+				</div>
+
 			</div>
 			<div class="col">
 				<span class="let-a--l1"></span>
@@ -276,66 +268,177 @@ $container = get_theme_mod( 'understrap_container_type' );
 	</div>
 
 		<div class="row d-flex justify-content-center pb-20">
-			<div class="col-auto">
-				<div class="team__cont">
-					<a href="#">
-						<span class="team__social1"></span>
-					</a>
-					<a href="#">
-						<span class="team__social2"></span>
-					</a>
-					<img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo">
-					<span class="team__name">innocent</span>
-				</div>
-			</div>
-			<div class="col-auto">
-				<div class="team__cont">
-					<a href="#">
-						<span class="team__social1"></span>
-					</a>
-					<a href="#">
-						<span class="team__social2"></span>
-					</a>
-					<img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/kei.png" class="img-fluid " alt="team member photo">
-					<span class="team__name">KEi</span>
-				</div>
-			</div>
-			<div class="col-auto">
-				<div class="team__cont">
-					<a href="#">
-						<span class="team__social1"></span>
-					</a>
-					<a href="#">
-						<span class="team__social2"></span>
-					</a>
-					<img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/kei.png" class="img-fluid " alt="team member photo">
-					<span class="team__name">KEi</span>
-				</div>
-			</div>
-			<div class="col-auto">
-				<div class="team__cont">
-					<a href="#">
-						<span class="team__social1"></span>
-					</a>
-					<a href="#">
-						<span class="team__social2"></span>
-					</a>
-					<img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/kei.png" class="img-fluid " alt="team member photo">
-					<span class="team__name">KEi</span>
-				</div>
-			</div>
-			<div class="col-auto">
-				<div class="team__cont">
-					<a href="#">
-						<span class="team__social1"></span>
-					</a>
-					<a href="#">
-						<span class="team__social2"></span>
-					</a>
-					<img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/kei.png" class="img-fluid " alt="team member photo">
-					<span class="team__name">KEi</span>
-				</div>
-			</div>
+			<?php if ( have_rows( 'member1' ) ) : ?>
+				<?php while ( have_rows( 'member1' ) ) :
+					the_row(); ?>
+						<div class="col-auto">
+							<div class="team__cont">
+
+							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
+								<a href="<?php echo esc_html( $social_a ); ?>">
+									<span class="team__social1"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
+								<a href="<?php echo esc_html( $social_b ); ?>">
+									<span class="team__social2"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php
+							$zdjecie = get_sub_field( 'zdjecie' );
+							if ( $zdjecie ) : ?>
+								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
+							<?php endif; ?>
+							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
+
+							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
+								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
+							<?php endif; ?>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
+			<?php if ( have_rows( 'member2' ) ) : ?>
+				<?php while ( have_rows( 'member2' ) ) :
+					the_row(); ?>
+						<div class="col-auto">
+							<div class="team__cont">
+
+							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
+								<a href="<?php echo esc_html( $social_a ); ?>">
+									<span class="team__social1"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
+								<a href="<?php echo esc_html( $social_b ); ?>">
+									<span class="team__social2"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php
+							$zdjecie = get_sub_field( 'zdjecie' );
+							if ( $zdjecie ) : ?>
+								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
+							<?php endif; ?>
+							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
+
+							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
+								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
+							<?php endif; ?>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
+			<?php if ( have_rows( 'member3' ) ) : ?>
+				<?php while ( have_rows( 'member3' ) ) :
+					the_row(); ?>
+						<div class="col-auto">
+							<div class="team__cont">
+
+							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
+								<a href="<?php echo esc_html( $social_a ); ?>">
+									<span class="team__social1"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
+								<a href="<?php echo esc_html( $social_b ); ?>">
+									<span class="team__social2"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php
+							$zdjecie = get_sub_field( 'zdjecie' );
+							if ( $zdjecie ) : ?>
+								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
+							<?php endif; ?>
+							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
+
+							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
+								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
+							<?php endif; ?>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
+			<?php if ( have_rows( 'member4' ) ) : ?>
+				<?php while ( have_rows( 'member4' ) ) :
+					the_row(); ?>
+						<div class="col-auto">
+							<div class="team__cont">
+
+							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
+								<a href="<?php echo esc_html( $social_a ); ?>">
+									<span class="team__social1"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
+								<a href="<?php echo esc_html( $social_b ); ?>">
+									<span class="team__social2"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php
+							$zdjecie = get_sub_field( 'zdjecie' );
+							if ( $zdjecie ) : ?>
+								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
+							<?php endif; ?>
+							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
+
+							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
+								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
+							<?php endif; ?>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
+			<?php if ( have_rows( 'member5' ) ) : ?>
+				<?php while ( have_rows( 'member5' ) ) :
+					the_row(); ?>
+						<div class="col-auto">
+							<div class="team__cont">
+
+							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
+								<a href="<?php echo esc_html( $social_a ); ?>">
+									<span class="team__social1"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
+								<a href="<?php echo esc_html( $social_b ); ?>">
+									<span class="team__social2"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php
+							$zdjecie = get_sub_field( 'zdjecie' );
+							if ( $zdjecie ) : ?>
+								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
+							<?php endif; ?>
+							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
+
+							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
+								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
+							<?php endif; ?>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
+
 		</div>
 
 
@@ -350,9 +453,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-10 col-xl-5">
 				<div class="streamers__circles-cont">
-					<a href="#">
+					<!-- <a href="#"> -->
 						<div class="streamers__circle--1"></div>
-					</a>
+					<!-- </a> -->
 					<div class="streamers__circle--2"></div>
 					<div class="streamers__circle--3"></div>
 					<div class="streamers__circle--4"></div>
@@ -381,9 +484,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="col-md-6 mx-auto">
 				<div class="shop__content">
 					<h1 class="glitch" data-text="Skeep">Sklep</h1>
-					<p>Światła, kamera, akcja! Drużyna pozytywnie zakręconych influencerów znakomicie dopełnia obraz naszej organizacji. Bez nich nie mogłoby powstać wiele ciekawych, a czasem nawet szalonych projektów. Mamy nadzieję, że wszystkich już od dawna obserwujesz. A jeśli nie to nic straconego, wszystkie ich sociale znajdziesz poniżej!</p>
+					<?php if ( $copy_sklep = get_field( 'copy_sklep' ) ) : ?>
+						<p><?php echo $copy_sklep; ?></p>
+					<?php endif; ?>
 					<br><br>
-					<a class="links" href="https://anonymo.com/shop"><span>zobacz więcej</span></a>
+					<a class="links" href="<?php the_field('shop_address', 'option'); ?>"><span>zobacz więcej</span></a>
 
 				</div>
 			</div>

@@ -28,7 +28,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 			<span class="lil-sygnet"></span>
 			<div class="title main-footer__title--paddings"><span>#Be</span>One</div>
-			<img src="wp-content/uploads/2021/05/logo.png" alt="logo anonymo">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="logo anonymo">
 
 		</div><!--col end -->
 
@@ -36,39 +36,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="main-footer__socials">
 			<span class="elem_x"></span>
 				<div class="main-footer__socials--wrapper">
-				<?php if ( have_rows( 'sociale' ) ) : ?>
-					<?php while ( have_rows( 'sociale' ) ) :
-						the_row(); ?>
 						<div class="main-footer__social">
-							<?php if ( $social1 = get_sub_field( 'social1' ) ) : ?>
-								<a href="<?php echo esc_html( $social1 ); ?>">
+							<a href="<?php the_field('social1', 'option'); ?>">
 									<span class="logo_fb"></span>
 								</a>
-							<?php endif; ?>
 						</div>
 						<div class="main-footer__social">
-							<?php if ( $social2 = get_sub_field( 'social2' ) ) : ?>
-								<a href="<?php echo esc_html( $social2 ); ?>">
+								<a href="<?php the_field('social2', 'option'); ?>">
 									<span class="logo_twitter"></span>
 								</a>
-							<?php endif; ?>
 						</div>
 						<div class="main-footer__social">
-							<?php if ( $social3 = get_sub_field( 'social3' ) ) : ?>
-								<a href="<?php echo esc_html( $social3 ); ?>">
+								<a href="<?php the_field('social3', 'option'); ?>">
 									<span class="logo_instagram"></span>
 								</a>
-							<?php endif; ?>
 						</div>
 						<div class="main-footer__social">
-							<?php if ( $social4 = get_sub_field( 'social4' ) ) : ?>
-								<a href="<?php echo esc_html( $social4 ); ?>">
+								<a href="<?php the_field('social4', 'option'); ?>">
 									<span class="logo_twitch"></span>
 								</a>
-							<?php endif; ?>
 						</div>
-					<?php endwhile; ?>
-				<?php endif; ?>
 				</div>
 			<span class="elem_x"></span>
 		</div>
@@ -85,7 +72,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<a href="#streamers">Streamerzy</a>
 	</div>
 	<div class="col-auto">
-		<a href="https://anonymo.com/shop">Sklep</a>
+		<a href="<?php the_field('shop_address', 'option'); ?>">Sklep</a>
 	</div>
 	<div class="col-auto d-none">
 		<a href="#">Media Zone</a>

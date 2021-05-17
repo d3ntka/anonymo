@@ -266,7 +266,7 @@ h3{
   position: absolute;
   height: 10rem;
   width: 10rem;
-  z-index: 198;
+  z-index: 10;
   &--l1{
     @extend .red-square;
     left: -5rem;
@@ -317,6 +317,7 @@ h3{
   background-repeat: no-repeat;
   display: flex;
   position: absolute;
+  z-index: 30;
   -webkit-filter: url("#glitch");
   filter: url("#glitch");
   // transform: rotate(180deg);
@@ -332,7 +333,6 @@ h3{
     @extend .elem_6x;
     left: 3rem;
     bottom: -5rem;
-    z-index:200;
   }
   &--loc3{
     @extend .elem_6x;
@@ -344,13 +344,11 @@ h3{
     @extend .elem_6x;
     left:15rem;
     bottom:6rem;
-    z-index:199;
   }
   &--l4{
     @extend .elem_6x;
     right:16rem;
     bottom:13rem;
-    z-index:199;
   }
 }
 
@@ -399,7 +397,12 @@ a{
       // padding: 1rem;
     }
 }
-
+.links--arrowDown{
+  @extend .links;
+  &::after{
+    transform: rotate(90deg);
+  }
+}
 // =================== NAVBAR =================
 .navbar{
   background: rgb(8,8,8);
@@ -560,7 +563,9 @@ $sygnet-move: 5rem;
     }
 
   }
-
+  img{
+    max-height: 50px;
+  }
 }
 
 
@@ -606,6 +611,12 @@ $about-section-height: 57rem;
         margin-left: -4rem;
         margin-right: -4rem;
         margin-top: 4rem;
+      }
+      &-malta{
+        @extend .about__bg--1;
+        background-image: url("../../../uploads/2021/05/anonymo_malta_chibi.jpg");
+        background-size: contain;
+
       }
     }
     &--2{
@@ -798,11 +809,285 @@ $about-section-height: 57rem;
 
 
 
+// ===================== PROJEKT MALTA =========================
+
+.title--malta{
+  @extend .title;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
 
 
+.calendar{
+  &__head{
+    position: relative;
+    margin-right: -15px;
+    margin-left: -15px;
+    &--bg{
+      background-color: $secondary;
+      padding-top: 4rem;
+      padding-bottom: 15rem;
+      margin-bottom: -12rem;
+      text-align: center;
+      position: relative;
+      border-radius: 4rem 4rem 0 0;
+      z-index: 100;
+    }
+    &--bgShadow{
+      // content: "";
+      background-color: #373737;
+      height: 10rem;
+      width: 98%;
+      border-radius: 4rem 4rem 0 0;
+      position: absolute;
+      top: -2rem;
+      left:1%;
+      z-index: 50;
+    }
+    &--el{
+      width: 5.6rem;
+      height: 11rem;
+      border: 0.5rem solid $primary;
+      border-radius: 3rem;
+      position: absolute;
+      background-color: $secondary;
+      top:-5.5rem;
+      &1{
+        @extend .calendar__head--el;
+        left: 15%;
+      }
+      &2{
+        @extend .calendar__head--el;
+        right: 15%;
+      }
+    }
+  }
+  &__section{
+    padding-top: 30rem;
+    padding-bottom: 20rem;
+  }
+  &__title{
+    color: #FFF;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .calendar-content{
+    position: relative;
+    z-index: 250;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    .calendar-item{
+      background-color: #FFF;
+      border-radius: 1em;
+      padding:7px;
+      margin: 0.5em;
+      @include media-breakpoint-down(sm){
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      &__date{
+        background-color: $secondary;
+        font-size: 2em;
+        line-height: 1em;
+        color: #FFF;
+        padding: 10px;
+        border-radius: 10px;
+        display: inline-block;
+        margin-left: 1em;
+        margin-top: 0.5em;
+      }
+      &__day{
+        font-size: 2em;
+        padding-left: 1em;
+        color: $primary;
+        font-weight: 300;
+        display: inline-block;
+
+        // display: flex;
+      }
+      &__action{
+        margin-top: 1em;
+        border-radius: 1em;
+        border: 1px solid #F3F3F3;
+        padding: 0 0 1em 0;
+        background-color: #F3F3F3;
+      }
+      &__action--wrap{
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        border-radius: 1em;
+        background-color: #FFF;
+        padding: 1em 1em 1em 1em;
+      }
+      &__hours{
+        color: $primary;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        font-size: 2.2em;
+        display: inline;
+        padding-right: 7px;
+        border-right: 1px solid #F3F3F3;
+      }
+      &__streamer{
+        padding-left: 5px;
+        padding-right: 5px;
+        display: inline-flex;
+        flex-grow: 2;
+      }
+      &__img{
+        width: 1.7em;
+        height: 1.7em;
+        display: inline-flex;
+      }
+      &__nick{
+        color: $primary;
+        font-size: 1.1em;
+        letter-spacing: -0.01em;
+        display: inline-flex;
+        padding-left: 5px;
+      }
+      &__btn{
+        color: $primary;
+        text-transform: uppercase;
+        font-size: 1.2em;
+        font-weight: 500;
+        border-radius: 1em;
+        letter-spacing: 0.13em;
+        padding: 9px 14px;
+        border: 1px solid $primary;
+        filter: none;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        span{
+          margin-left: 7px;
+        }
+        &--soon{
+          @extend .calendar-item__btn;
+          letter-spacing: 0.06em;
+        }
+        &--watch{
+          @extend .calendar-item__btn;
+          &::before{
+            content: "";
+            background: url("../img/play.svg");
+            width:20px;
+            height:20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: inline-flex;
+            animation: play-btn 3s linear infinite;
+            transform-origin: 35% 50%;
+          }
+          &:hover{
+            border: 1px solid $secondary;
+            color: $secondary;
+
+          }
+        }
+      }
+      &__desc{
+        color: $primary;
+        font-size: 1.2em;
+        letter-spacing: 0.04em;
+        font-weight: 500;
+        padding: 1em 1em 0 1em;
+      }
+
+    }
+  }
 
 
+}
 
+
+// ======================== Loading icon ====================
+$spinnerSize: 20;
+
+svg.spinner {
+    width: $spinnerSize + px;
+    height: $spinnerSize + px;
+    x: 0px;
+    y: 0px;
+    viewBox: 0 0 $spinnerSize $spinnerSize;
+
+    circle {
+        fill: transparent;
+        stroke: #212121;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-dasharray: (3.14 * $spinnerSize);
+        transform-origin: (0.5px * $spinnerSize) (0.5px * $spinnerSize) 0;
+        animation: spinner 3s linear infinite;
+    }
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        stroke-dashoffset: (0.66 * $spinnerSize);
+    } 50% {
+        -webkit-transform: rotate(720deg);
+        stroke-dashoffset: (3.14 * $spinnerSize);
+    } 100% {
+        -webkit-transform: rotate(1080deg);
+        stroke-dashoffset: (0.66 * $spinnerSize);
+    }
+}
+
+@-moz-keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        stroke-dashoffset: (0.66 * $spinnerSize);
+    } 50% {
+        -moz-transform: rotate(720deg);
+        stroke-dashoffset: (3.14 * $spinnerSize);
+    } 100% {
+        -moz-transform: rotate(1080deg);
+        stroke-dashoffset: (0.66 * $spinnerSize);
+    }
+}
+
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: (0.66 * $spinnerSize);
+    } 50% {
+        transform: rotate(720deg);
+        stroke-dashoffset: (3.14 * $spinnerSize);
+    } 100% {
+        transform: rotate(1080deg);
+        stroke-dashoffset: (0.66 * $spinnerSize);
+    }
+}
+
+
+@keyframes play-btn {
+    0% {
+        transform: rotate(0deg);
+    } 16% {
+        transform: rotate(120deg);
+    } 32% {
+        transform: rotate(120deg);
+    } 48% {
+        transform: rotate(240deg);
+    } 64% {
+        transform: rotate(240deg);
+    } 80% {
+        transform: rotate(360deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
+}
 
 
 
@@ -824,12 +1109,14 @@ $about-section-height: 57rem;
     }
   }
   &__socials{
+    position: relative;
     margin-left: auto;
     margin-right: auto;
     max-width: 50rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 600;
     &--wrapper{
       display: flex;
       justify-content: center;
@@ -840,6 +1127,7 @@ $about-section-height: 57rem;
     padding: 0 1.5rem;
   }
   &__menu{
+    position: relative;
     padding-top: 5rem;
     display: flex;
     align-items: center;
@@ -848,6 +1136,7 @@ $about-section-height: 57rem;
     font-size: 1.4rem;
     letter-spacing: 0.13em;
     opacity: 0.6;
+    z-index: 600;
   }
   &__rules{
     @extend .main-footer__menu;
