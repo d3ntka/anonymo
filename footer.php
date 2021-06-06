@@ -106,7 +106,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<feColorMatrix in="SourceGraphic" mode="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r" />
 
 				<feOffset in="r" result="r" dx="-5" dy="0">
-					<animate attributeName="dx" attributeType="XML" values="-1; .5; 3; -2; .4; .5; 2; 1; .5; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0;" dur=".5s" repeatCount="indefinite"/>
+					<animate attributeName="dx" attributeType="XML" values="-1; .5; 3; -2; .4; .5; 2; 1; .5; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0;" dur="0.5s" repeatCount="indefinite"/>
 					<animate attributeName="dy" attributeType="XML" values="16; -8; 3.2; 16; 8; 24; -4.0; 16; 8; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0;" dur="1s" repeatCount="indefinite"/>
 				</feOffset>
 

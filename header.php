@@ -48,6 +48,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<a class="skip-link sr-only sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'understrap' ); ?></a>
 
 		<nav id="main-nav" class="navbar navbar-expand-md navbar-dark" aria-labelledby="main-nav-label">
+			
 			<div class="container-fluid">
 
 			<h2 id="main-nav-label" class="sr-only">

@@ -262,7 +262,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php while ( have_rows( 'calendar_group' ) ) :
 					the_row(); ?>
 					<!-- <div class="calendar-item"> -->
-					<div class="col-11 col-sm-11 col-md-auto calendar-item">
+					<div class="col-12 col-md calendar-item">
 							<?php if ( $date = get_sub_field( 'date' ) ) : ?>
 								<div class="calendar-item__date"><?php echo esc_html( $date ); ?></div>
 							<?php endif; ?>
@@ -333,16 +333,61 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-10 col-xl-5">
 				<div class="streamers__circles-cont">
-					<!-- <a href="#"> -->
-						<div class="streamers__circle--1"></div>
-					<!-- </a> -->
-					<div class="streamers__circle--2"></div>
-					<div class="streamers__circle--3"></div>
-					<div class="streamers__circle--4"></div>
-					<div class="streamers__circle--5"></div>
-					<div class="streamers__circle--6"></div>
-					<div class="streamers__circle--7"></div>
-					<div class="streamers__circle--8"></div>
+					<?php if ( have_rows( 'streamers_photos' ) ) : ?>
+						<?php while ( have_rows( 'streamers_photos' ) ) :
+							the_row(); ?>
+
+							<?php
+							$streamers_photos_1 = get_sub_field( 'streamers_photos_1' );
+							if ( $streamers_photos_1 ) : ?>
+								<img class="streamers__circle--1" src="<?php echo esc_url( $streamers_photos_1['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_1['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_2 = get_sub_field( 'streamers_photos_2' );
+							if ( $streamers_photos_2 ) : ?>
+								<img class="streamers__circle--2" src="<?php echo esc_url( $streamers_photos_2['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_2['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_3 = get_sub_field( 'streamers_photos_3' );
+							if ( $streamers_photos_3 ) : ?>
+								<img class="streamers__circle--3" src="<?php echo esc_url( $streamers_photos_3['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_3['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_4 = get_sub_field( 'streamers_photos_4' );
+							if ( $streamers_photos_4 ) : ?>
+								<img class="streamers__circle--4" src="<?php echo esc_url( $streamers_photos_4['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_4['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_5 = get_sub_field( 'streamers_photos_5' );
+							if ( $streamers_photos_5 ) : ?>
+								<img class="streamers__circle--5" src="<?php echo esc_url( $streamers_photos_5['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_5['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_6 = get_sub_field( 'streamers_photos_6' );
+							if ( $streamers_photos_6 ) : ?>
+								<img class="streamers__circle--6" src="<?php echo esc_url( $streamers_photos_6['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_6['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_7 = get_sub_field( 'streamers_photos_7' );
+							if ( $streamers_photos_7 ) : ?>
+								<img class="streamers__circle--7" src="<?php echo esc_url( $streamers_photos_7['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_7['alt'] ); ?>" />
+							<?php endif; ?>
+
+							<?php
+							$streamers_photos_8 = get_sub_field( 'streamers_photos_8' );
+							if ( $streamers_photos_8 ) : ?>
+								<img class="streamers__circle--8" src="<?php echo esc_url( $streamers_photos_8['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_8['alt'] ); ?>" />
+							<?php endif; ?>
+
+						<?php endwhile; ?>
+					<?php endif; ?>
+
 				</div>
 			</div>
 			<div class="col-lg-10 col-xl-6">

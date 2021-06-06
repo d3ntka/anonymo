@@ -57,7 +57,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<div class="col-auto socials">
 					<div class="row pb-3">
 						<div class="col-auto">
-							<h3 class="socials__title"><span>śledź nas</span></h3>
+							<h3 class="socials__title">
+								<span>
+									<?php if ( $socials_title = get_field( 'socials_title' ) ) : ?>
+										<?php echo esc_html( $socials_title ); ?>
+									<?php endif; ?>
+								</span></h3>
 						</div>
 					</div>
 					<div class="row d-flex justify-content-start align-items-center">
@@ -87,7 +92,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<div class="col-auto sponsors">
 					<div class="row d-flex justify-content-end">
 						<div class="col-auto">
-							<h3 class="sponsors__title"><span>wspierają nas</span></h3>
+							<h3 class="sponsors__title">
+								<span>
+									<?php if ( $sponsors_title = get_field( 'sponsors_title' ) ) : ?>
+										<?php echo esc_html( $sponsors_title ); ?>
+									<?php endif; ?>
+								</span></h3>
 						</div>
 
 					</div>
@@ -202,10 +212,25 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<!-- <div class="col-md-10 col-lg-8 col-xl-6"> -->
 			<div class="col-md-6">
 		  	<div class="about__sectionA--text mx-auto my-auto">
-						<h1 class="glitch" data-text="O ANS">O Nas</h1>
-						<p>Anonymo Esports to powiew świeżego powietrza na polskiej scenie. Już od dnia powstania staramy się na niej jak najmocniej namieszać - oczywiście w tym pozytywnym kontekście! </p>
+					<?php if ( $about_title = get_field( 'about_title' ) ) : ?>
+						<h1 class="glitch" data-text="<?php echo esc_html( $about_title ); ?>"><?php echo esc_html( $about_title ); ?></h1>
+					<?php endif; ?>
+						<p><?php if ( $about_text_1 = get_field( 'about_text_1' ) ) : ?>
+								<?php echo $about_text_1; ?>
+							<?php endif; ?></p>
 						<br><br>
-						<a href="#" class="links"><span>Info na bieżąco!</span></a>
+						<?php if ( have_rows( 'about_link_1' ) ) : ?>
+							<?php while ( have_rows( 'about_link_1' ) ) :
+								the_row(); ?>
+
+								<?php if (( $link_name = get_sub_field( 'link_name' ) ) && ( $link_target = get_sub_field( 'link_target' ) ) ): ?>
+
+									<a href="<?php echo esc_html( $link_target ); ?>" class="links"><span><?php echo esc_html( $link_name ); ?></span></a>
+
+								<?php endif; ?>
+
+							<?php endwhile; ?>
+						<?php endif; ?>
 				</div>
 
 			</div>
@@ -239,9 +264,24 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</div>
 			<div class="col-md-6">
 				<div class="about__sectionB--text">
-					<p>Zgrana drużyna stworzona z pasjonatów gier i esportu, popularnych influencerów oraz profesjonalnych graczy. Podchodzimy kreatywnie i nieszablonowo do postawionych przed nami przeszkód, a gdy zdarzy się nam popełnić jakiś błąd - bijemy się w pierś i szukamy sposobu aby go naprawić!. Poznajcie członków naszego zespołu!</p>
+					<p><?php if ( $about_text_2 = get_field( 'about_text_2' ) ) : ?>
+							<?php echo $about_text_2; ?>
+						<?php endif; ?></p>
 					<br><br>
-					<a href="#team" class="links"><span>Nasz Team</span></a>
+
+					<?php if ( have_rows( 'about_link_2' ) ) : ?>
+						<?php while ( have_rows( 'about_link_2' ) ) :
+							the_row(); ?>
+
+							<?php if (( $link_name = get_sub_field( 'link_name' ) ) && ( $link_target = get_sub_field( 'link_target' ) ) ): ?>
+
+								<a href="<?php echo esc_html( $link_target ); ?>" class="links"><span><?php echo esc_html( $link_name ); ?></span></a>
+
+							<?php endif; ?>
+
+						<?php endwhile; ?>
+					<?php endif; ?>
+
 				</div>
 			</div>
 			</div>
@@ -250,7 +290,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	</div>
 </section>
 
-<section class="team">
+<section class="team pb-20">
 	<span class="let-n--l2"></span>
 	<span class="let-m--l2"></span>
 	<span class="lil-sygnet--l1"></span>
@@ -261,18 +301,31 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</div>
 		</div>
 		<div class="row pb-9">
-			<div class="col-8 aligncenter">
+			<div class="col-12 col-md-8 aligncenter">
 				<p>Ci wspaniali gracze tworzą trzon naszej organizacji. To właśnie z nimi przeżywacie największe esportowe emocje. Poznajcie ich dokładniej i koniecznie wpadnijcie na przypięte social media!</p>
 			</div>
 		</div>
 	</div>
 
-		<div class="row d-flex justify-content-center pb-20">
-			<?php if ( have_rows( 'member1' ) ) : ?>
-				<?php while ( have_rows( 'member1' ) ) :
-					the_row(); ?>
-						<div class="col-auto">
-							<div class="team__cont">
+
+<!-- TEAM SLIDER -->
+
+<!-- Slider main container -->
+<?php if ( have_rows( 'member' ) ) : ?>
+	<div class="swiper-container">
+	  <!-- Additional required wrapper -->
+	  <div class="swiper-wrapper">
+	    <!-- Slides -->
+			<?php while ( have_rows( 'member' ) ) :
+				the_row(); ?>
+			    <div class="swiper-slide">
+						<div class="team__cont">
+
+
+							<?php $zdjecie = get_sub_field( 'zdjecie' );
+							if ( $zdjecie ) : ?>
+								<img class="team__photo" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
+							<?php endif; ?>
 
 							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
 								<a href="<?php echo esc_html( $social_a ); ?>">
@@ -286,13 +339,52 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</a>
 							<?php endif; ?>
 
+							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
+								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
+							<?php endif; ?>
+
+						</div>
+					</div>
+				<?php endwhile; ?>
+
+	  </div>
+	  <!-- If we need pagination -->
+	  <div class="swiper-pagination"></div>
+
+	  <!-- If we need navigation buttons -->
+	  <div class="swiper-button-prev"></div>
+	  <div class="swiper-button-next"></div>
+
+	  <!-- If we need scrollbar -->
+	  <div class="swiper-scrollbar"></div>
+	</div>
+<?php endif; ?>
+
+<!--
+		<div class="row d-flex justify-content-center">
+			<?php if ( have_rows( 'member1' ) ) : ?>
+				<?php while ( have_rows( 'member1' ) ) :
+					the_row(); ?>
+						<div class="col-auto">
+							<div class="team__cont">
+
 							<?php
 							$zdjecie = get_sub_field( 'zdjecie' );
 							if ( $zdjecie ) : ?>
 								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
 							<?php endif; ?>
-							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
 
+							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
+								<a href="<?php echo esc_html( $social_a ); ?>">
+									<span class="team__social1"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
+								<a href="<?php echo esc_html( $social_b ); ?>">
+									<span class="team__social2"></span>
+								</a>
+							<?php endif; ?>
 
 							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
 								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
@@ -325,7 +417,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 							if ( $zdjecie ) : ?>
 								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
 							<?php endif; ?>
-							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
 
 
 							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
@@ -359,7 +450,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							if ( $zdjecie ) : ?>
 								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
 							<?php endif; ?>
-							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
 
 
 							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
@@ -393,7 +484,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							if ( $zdjecie ) : ?>
 								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
 							<?php endif; ?>
-							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
 
 
 							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
@@ -427,7 +518,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 							if ( $zdjecie ) : ?>
 								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
 							<?php endif; ?>
-							<!-- <img class="team__photo" src="<?php echo get_template_directory_uri(); ?>/img/innocent.png" class="img-fluid " alt="team member photo"> -->
+
 
 
 							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
@@ -439,7 +530,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php endwhile; ?>
 			<?php endif; ?>
 
-		</div>
+		</div> -->
 
 
 </section>
@@ -452,25 +543,94 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<span class="let-y--l2"></span>
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-10 col-xl-5">
-				<div class="streamers__circles-cont">
-					<!-- <a href="#"> -->
-						<div class="streamers__circle--1"></div>
-					<!-- </a> -->
-					<div class="streamers__circle--2"></div>
-					<div class="streamers__circle--3"></div>
-					<div class="streamers__circle--4"></div>
-					<div class="streamers__circle--5"></div>
-					<div class="streamers__circle--6"></div>
-					<div class="streamers__circle--7"></div>
-					<div class="streamers__circle--8"></div>
-				</div>
+			<div class="streamers__circles-cont">
+
+				<?php if ( have_rows( 'streamers_photos' ) ) : ?>
+					<?php while ( have_rows( 'streamers_photos' ) ) :
+						the_row(); ?>
+
+						<?php
+						$streamers_photos_1 = get_sub_field( 'streamers_photos_1' );
+						if ( $streamers_photos_1 ) : ?>
+							<img class="streamers__circle--1" src="<?php echo esc_url( $streamers_photos_1['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_1['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_2 = get_sub_field( 'streamers_photos_2' );
+						if ( $streamers_photos_2 ) : ?>
+							<img class="streamers__circle--2" src="<?php echo esc_url( $streamers_photos_2['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_2['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_3 = get_sub_field( 'streamers_photos_3' );
+						if ( $streamers_photos_3 ) : ?>
+							<img class="streamers__circle--3" src="<?php echo esc_url( $streamers_photos_3['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_3['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_4 = get_sub_field( 'streamers_photos_4' );
+						if ( $streamers_photos_4 ) : ?>
+							<img class="streamers__circle--4" src="<?php echo esc_url( $streamers_photos_4['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_4['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_5 = get_sub_field( 'streamers_photos_5' );
+						if ( $streamers_photos_5 ) : ?>
+							<img class="streamers__circle--5" src="<?php echo esc_url( $streamers_photos_5['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_5['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_6 = get_sub_field( 'streamers_photos_6' );
+						if ( $streamers_photos_6 ) : ?>
+							<img class="streamers__circle--6" src="<?php echo esc_url( $streamers_photos_6['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_6['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_7 = get_sub_field( 'streamers_photos_7' );
+						if ( $streamers_photos_7 ) : ?>
+							<img class="streamers__circle--7" src="<?php echo esc_url( $streamers_photos_7['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_7['alt'] ); ?>" />
+						<?php endif; ?>
+
+						<?php
+						$streamers_photos_8 = get_sub_field( 'streamers_photos_8' );
+						if ( $streamers_photos_8 ) : ?>
+							<img class="streamers__circle--8" src="<?php echo esc_url( $streamers_photos_8['url'] ); ?>" alt="<?php echo esc_attr( $streamers_photos_8['alt'] ); ?>" />
+						<?php endif; ?>
+
+					<?php endwhile; ?>
+				<?php endif; ?>
+
 			</div>
+
+		</div>
+
+
 			<div class="col-lg-10 col-xl-6">
 				<div class="streamers__text">
-					<h1 class="glitch" data-text="STRAEMREZY">STREAMERZY</h1>
-					<p>Światła, kamera, akcja! Drużyna pozytywnie zakręconych influencerów znakomicie dopełnia obraz naszej organizacji. Bez nich nie mogłoby powstać wiele ciekawych, a czasem nawet szalonych projektów. Mamy nadzieję, że wszystkich już od dawna obserwujesz. A jeśli nie to nic straconego, wszystkie ich sociale znajdziesz poniżej!</p>
+					<?php if ( $streamers_title = get_field( 'streamers_title' ) ) : ?>
+						<h1 class="glitch" data-text="<?php echo esc_html( $streamers_title ); ?>"><?php echo esc_html( $streamers_title ); ?></h1>
+					<?php endif; ?>
+					<p><?php if ( $streamers_text = get_field( 'streamers_text' ) ) : ?>
+							<?php echo $streamers_text; ?>
+						<?php endif; ?></p>
 					<br><br>
-					<a class="links" href="https://www.twitch.tv/team/anonymoesports"><span>zobacz więcej</span></a>
+
+
+					<?php if ( have_rows( 'streamers_link' ) ) : ?>
+						<?php while ( have_rows( 'streamers_link' ) ) :
+							the_row(); ?>
+
+							<?php if (( $link_name = get_sub_field( 'link_name' ) ) && ( $link_target = get_sub_field( 'link_target' ) ) ): ?>
+
+								<a href="<?php echo esc_html( $link_target ); ?>" class="links"><span><?php echo esc_html( $link_name ); ?></span></a>
+
+							<?php endif; ?>
+
+						<?php endwhile; ?>
+					<?php endif; ?>
+
+
+
 				</div>
 			</div>
 		</div>
@@ -483,12 +643,31 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row d-flex justify-content-center align-items-center">
 			<div class="col-md-6 mx-auto">
 				<div class="shop__content">
-					<h1 class="glitch" data-text="Skeep">Sklep</h1>
-					<?php if ( $copy_sklep = get_field( 'copy_sklep' ) ) : ?>
-						<p><?php echo $copy_sklep; ?></p>
+					<?php if ( $shop_title = get_field( 'shop_title' ) ) : ?>
+						<h1 class="glitch" data-text="<?php echo esc_html( $shop_title ); ?>"><?php echo esc_html( $shop_title ); ?></h1>
 					<?php endif; ?>
+					<p>
+						<?php if ( $shop_text = get_field( 'shop_text' ) ) : ?>
+							<?php echo $shop_text; ?>
+						<?php endif; ?>
+					</p>
 					<br><br>
-					<a class="links" href="<?php the_field('shop_address', 'option'); ?>"><span>zobacz więcej</span></a>
+
+
+
+					<?php if ( have_rows( 'shop_link' ) ) : ?>
+					<?php while ( have_rows( 'shop_link' ) ) :
+						the_row(); ?>
+
+						<?php if ( $link_name = get_sub_field( 'link_name' ) ) : ?>
+
+							<a href="<?php the_field('shop_address', 'option'); ?>" class="links"><span><?php echo esc_html( $link_name ); ?></span></a>
+
+						<?php endif; ?>
+
+					<?php endwhile; ?>
+				<?php endif; ?>
+
 
 				</div>
 			</div>
