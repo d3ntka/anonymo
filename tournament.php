@@ -26,7 +26,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <?php endif; ?>
 <span id="top"></span>
 
-<section class="main_page">
+<section class="tournament-hero">
 	<span class="elem_6x--loc1"></span>
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 	<div class="row aligncenter">
@@ -35,13 +35,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="main_title d-flex  aligncenter">
 				<div class="sygnet--wrapper">
 					<div class="glitch_sygnet">
-						<!-- <img src="<?php echo get_template_directory_uri(); ?>/img/sygnet-img.png" alt=""> -->
-						<div class="sygnet_bg"></div>
+						<?php
+							$postaci_bg = get_field( 'postaci_bg' );
+							if ( $postaci_bg ) : ?>
+							<div class="tournament-hero__charactersBG" style="background-image:url('<?php echo esc_url( $postaci_bg['url'] ); ?>');"></div>
+						<?php endif; ?>
 					</div>
 
 				</div>
 				<div class="title">
-					<span>#Be</span>One
+					<img src="<?php echo get_template_directory_uri(); ?>/img/turniej_logo.svg" alt="">
 				</div>
 
 			</div>
@@ -89,6 +92,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div>
 				</div>
 
+
+				<?php if ( have_rows( 'sponsors' ) ) : ?>
 				<div class="col-auto sponsors">
 					<div class="row d-flex justify-content-end">
 						<div class="col-auto">
@@ -103,7 +108,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div>
 					<div class="row d-flex justify-content-end align-items-center">
 
-						<?php if ( have_rows( 'sponsors' ) ) : ?>
+
 							<?php while ( have_rows( 'sponsors' ) ) :
 								the_row(); ?>
 
@@ -187,10 +192,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 							<?php endwhile; ?>
-						<?php endif; ?>
 
 					</div>
 				</div>
+			<?php endif; ?>
 
 
 
@@ -205,28 +210,56 @@ $container = get_theme_mod( 'understrap_container_type' );
 <section class="tournament-about">
 	<div class="container-fluid tournament-about--wrapper" id="tournament-about">
 		<span class="let-a--l2"></span>
-		<span class="let-n--l3"></span>
+		<!-- <span class="let-n--l3"></span> -->
 		<span class="let-o--l3"></span>
 		<span class="let-y--l2"></span>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-10 col-xl-5">
+		<div class="row d-flex justify-content-between align-items-center">
+			<?php if ( have_rows( 'prizes' ) ) : ?>
+				<div class="col-lg-10 col-xl-7">
+					<div class="tournament-about__prizes">
+							<?php while ( have_rows( 'prizes' ) ) :
+								the_row(); ?>
+								<div class="tournament-about__prizes--2nd-3rd">
+									<h1 class="glitch" data-text="II">II</h1>
+									<div class="tournament-about__prizes--place">Miejsce</div>
+									<div class="tournament-about__prizes--amount">
+										<?php if ( $place2 = get_sub_field( 'place2' ) ) : ?>
+											<?php echo esc_html( $place2 ); ?><span>PLN</span>
+										<?php endif; ?>
+									</div>
+								</div>
+								<div class="tournament-about__prizes--1st">
+									<h1 class="glitch" data-text="I">I</h1>
+									<div class="tournament-about__prizes--place">Miejsce</div>
+									<div class="tournament-about__prizes--amount1st">
+										<?php if ( $place1 = get_sub_field( 'place1' ) ) : ?>
+											<?php echo esc_html( $place1 ); ?><span>PLN</span>
+										<?php endif; ?>
+									</div>
+								</div>
+								<div class="tournament-about__prizes--2nd-3rd">
+									<h1 class="glitch" data-text="III">III</h1>
+									<div class="tournament-about__prizes--place">Miejsce</div>
+									<div class="tournament-about__prizes--amount">
+										<?php if ( $place3 = get_sub_field( 'place3' ) ) : ?>
+											<?php echo esc_html( $place3 ); ?><span>PLN</span>
+										<?php endif; ?>
+									</div>
+								</div>
+							<?php endwhile; ?>
+					</div>
+			</div>
+		<?php endif; ?>
 
 
-
-
-
-		</div>
-
-
-			<div class="col-lg-10 col-xl-6">
-				<div class="tournament_about__text">
+			<div class="col-lg-10 col-xl-4 pb">
+				<div class="tournament-about__text">
 					<?php if ( $tournament_about_title = get_field( 'tournament_about_title' ) ) : ?>
 						<h1 class="glitch" data-text="<?php echo esc_html( $tournament_about_title ); ?>"><?php echo esc_html( $tournament_about_title ); ?></h1>
 					<?php endif; ?>
 					<p><?php if ( $tournament_about_text = get_field( 'tournament_about_text' ) ) : ?>
 							<?php echo $tournament_about_text; ?>
 						<?php endif; ?></p>
-					<br><br>
 
 
 					<?php if ( have_rows( 'tournament_about_link' ) ) : ?>
@@ -255,7 +288,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 
-<section class="team pb-20">
+<section class="team pb-20 d-none">
 	<span class="let-n--l2"></span>
 	<span class="let-m--l2"></span>
 	<span class="lil-sygnet--l1"></span>
@@ -325,14 +358,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section>
 
 <!-- TOURNAMENT BRACKET -->
-<section>
+<section class="d-none">
 	<?php if ( $bracket_embed = get_field( 'bracket_embed' ) ) : ?>
 		<?php echo $bracket_embed; ?>
 	<?php endif; ?>
 </section>
 
 
-<section id="tournament-twitch" class="tournament-twitch">
+<section id="tournament-twitch" class="tournament-twitch d-none">
 	<div class="container-fluid">
 		<div class="row about__sectionA">
 

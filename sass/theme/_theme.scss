@@ -1192,24 +1192,111 @@ svg.spinner {
 // ========================= TOURNAMENT =============================
 
 .tournament{
+  &-hero{
+    @extend .main_page;
+    &__charactersBG{
+      // background-image: url("../img/turniej_postacie.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 137.6rem;
+      height: 77.4rem;
+    }
+  }
+
+
   &-about{
     position: relative;
     background-image: url("../img/streamers_bg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    min-height: 75rem;
+    // min-height: 75rem;
     margin-bottom: 10rem;
     &--wrapper{
-      padding-top: 13rem;
+      padding-top: 22rem;
+      padding-bottom: 20rem;
+    }
+
+    &__prizes{
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid $secondary;
+      border-radius: 10px;
+      width: 100%;
+      // padding-left: 5rem;
+      // padding-right: 5rem;
+      margin: 4rem 0;
+      // backdrop-filter: blur(12px) brightness(60%);
+      position: relative;
+      z-index: 50;
+      & h1{
+        padding-bottom: 1rem;
+        margin: 0;
+      }
+      &--2nd-3rd{
+        padding: 0 1vw;
+      }
+      &--1st{
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(12px) brightness(60%);
+        border: 2px solid #FFF;
+        border-radius: 10px;
+        margin: -3.3rem 0;
+        padding: 7rem 4rem;
+        position: relative;
+        z-index: 55;
+      }
+      &--place{
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.07rem;
+        @include media-breakpoint-only(xs){
+          font-size: 1.5rem;
+          }
+      }
+      &--amount{
+        font-size: 2.6rem;
+        font-weight: 800;
+        padding-top: 2.7rem;
+        & span {
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+        @include media-breakpoint-only(xs){
+          font-size: 1.6rem;
+          & span {
+            font-size: 1.0rem;
+          }
+        }
+      }
+      &--amount1st{
+        font-size: 3.4rem;
+        font-weight: 800;
+        padding-top: 3.4rem;
+        & span {
+          font-size: 2.0rem;
+          font-weight: 700;
+        }
+        @include media-breakpoint-only(xs){
+          font-size: 2.4rem;
+          & span {
+            font-size: 1.8rem;
+          }
+        }
+      }
     }
     &__text{
       // padding-top: 10rem;
       @include media-breakpoint-up(xl){
-        padding-left: 5rem;
+        // padding-left: 5rem;
       }
       @include media-breakpoint-down(lg){
-        padding-bottom: 15rem;
+        padding-top: 5rem;
+        // padding-bottom: 15rem;
       }
     }
   }
