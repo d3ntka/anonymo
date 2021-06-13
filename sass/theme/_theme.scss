@@ -90,6 +90,9 @@ h3{
     text-transform: uppercase;
 }
 
+.secondary{
+  color: $secondary;
+}
 
 // ============== Elementy graficzne ============
 .logo_socials{
@@ -340,6 +343,11 @@ h3{
     left: 3rem;
     bottom: -5rem;
   }
+  &--loc2-tourn{
+    @extend .elem_6x;
+    left: -3rem;
+    bottom: -5rem;
+  }
   &--loc3{
     @extend .elem_6x;
     right: 2rem;
@@ -486,6 +494,9 @@ a{
   letter-spacing: 0.07em;
   span{
     color: $secondary;
+  }
+  img{
+    max-width: 60rem;
   }
   @include media-breakpoint-down(sm) {
     font-size: 10rem;
@@ -714,9 +725,15 @@ $about-section-height: 57rem;
 }
 
 // SLIDER
+.swiper-container, .swiper-container_tournament{
+  padding: 10rem 0;
+}
+.swiper-container_tournament{
+  position: relative;
+}
 .swiper-scrollbar{
   bottom: 5rem;
-  background: rgba(255,255,255,0.3);
+  background: #484848;
 }
 
 .swiper-scrollbar-drag {
@@ -727,7 +744,14 @@ $about-section-height: 57rem;
   top: -14px;
 }
 
+.swiper-container-horizontal > .swiper-scrollbar {
+  /* bottom: 3px; */
+  bottom: 20px;
+}
 
+.swiper-button-next, .swiper-button-prev {
+  color: #FFF;
+}
 
 
 
@@ -839,7 +863,7 @@ $about-section-height: 57rem;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 90rem;
+  min-height: 90rem;
   &__content{
     padding-top: 35%;
   }
@@ -1301,6 +1325,10 @@ svg.spinner {
     }
   }
   &-teams{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     &__circle{
       height: 15rem;
       width: 15rem;
@@ -1310,27 +1338,90 @@ svg.spinner {
       box-shadow: 0 0 0 2px #FFF;
       background-repeat: no-repeat;
       background-size: contain;
-      margin-left: auto;
-      margin-right: auto;
+      // margin-left: auto;
+      // margin-right: auto;
+      // flex-basis: 1;
+
       &:hover{
         transform: scale(1.1);
       }
     }
     &__teamname{
-      margin-left: auto;
-      margin-right: auto;
+      // margin-left: auto;
+      // margin-right: auto;
       text-align: center;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 0.07rem;
+      padding-top: 3rem;
+      line-height: 1;
+      // flex-basis: 1;
+      &--team{
+        color: $secondary;
+      }
+      &--name{
+
+      }
     }
   }
   &-twitch{
-    &__sectionA{
+    &__info{
       position: relative;
       min-height: $about-section-height;
       &--text{
-        padding-top: 12rem;
+        // display: flex;
+        // align-items: center;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
         @include media-breakpoint-up(xl){
-          padding: 12rem 6rem 0 9rem;
+          padding-top: 12rem;
         }
+      }
+      &--link{
+        font-size: 1.2rem;
+        letter-spacing: 0.13em;
+        font-weight: 800;
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+        &:hover{
+          color: $link-color;
+          -webkit-filter: url("#glitch");
+          filter: url("#glitch");
+        }
+      }
+      &--twitch-embed{
+        &-cont{
+          position: relative;
+          overflow: hidden;
+          padding-top: 56.25%;
+          z-index:200;
+          background-image: url("../img/about1.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          @media (min-width: 1200px) and (max-width: 1600px){
+            margin-right: -10rem;
+            padding-bottom: 5.625rem;
+          }
+          @media (min-width: 1601px){
+            margin-right: -14rem;
+            padding-bottom: 7.875rem;
+          }
+
+          // padding-bottom: 14rem;
+          @include media-breakpoint-down(sm){
+            margin-left: -4rem;
+            margin-right: -4rem;
+            margin-top: 4rem;
+          }
+        }
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+
       }
     }
   }

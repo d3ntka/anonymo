@@ -43,3 +43,48 @@ const swiper = new Swiper('.swiper-container', {
     hide: false,
   },
 });
+const swiperTournament = new Swiper('.swiper-container_tournament', {
+  // Optional parameters
+  // loop: true,
+  slidesPerView: 1,
+  // spaceBetween: 10,
+
+  breakpoints: {
+    350: {
+      slidesPerView: 2,
+    },
+    500: {
+      slidesPerView: 3,
+    },
+    700: {
+      slidesPerView: 4,
+    },
+    900: {
+      slidesPerView: 5,
+    },
+    1300: {
+      slidesPerView: 6,
+    },
+    1500: {
+      slidesPerView: 7,
+    },
+    1500: {
+      slidesPerView: 8,
+    },
+
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+    dragSize: 28,
+    hide: false,
+  },
+});

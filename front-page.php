@@ -89,6 +89,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div>
 				</div>
 
+
+
+
+
+				<?php if ( have_rows( 'sponsors' ) ) : ?>
 				<div class="col-auto sponsors">
 					<div class="row d-flex justify-content-end">
 						<div class="col-auto">
@@ -102,95 +107,27 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					</div>
 					<div class="row d-flex justify-content-end align-items-center">
-
-						<?php if ( have_rows( 'sponsors' ) ) : ?>
 							<?php while ( have_rows( 'sponsors' ) ) :
 								the_row(); ?>
 
-										<?php if ( have_rows( 'sponsor1' ) ) : ?>
-											<?php while ( have_rows( 'sponsor1' ) ) :
-												the_row(); ?>
+								<?php	$sponsor_logo = get_sub_field( 'sponsor_logo' );
+								if ( $sponsor_logo ) : ?>
+								<div class="col-auto">
+									<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
+									<a href="<?php echo esc_html( $sponsor_link ); ?>"><img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" /></a>
+									<?php else: ?>
+										<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
+									<?php endif; ?>
+								</div>
 
-
-												<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-													<div class="col-auto">
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php $sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-												<?php endif; ?>
-
-											<?php endwhile; ?>
-										<?php endif; ?>
-
-								<?php if ( have_rows( 'sponsor2' ) ) : ?>
-									<?php while ( have_rows( 'sponsor2' ) ) :
-										the_row(); ?>
-
-											<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-												<div class="col-auto">
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php
-													$sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-											<?php endif; ?>
-
-									<?php endwhile; ?>
 								<?php endif; ?>
-
-								<?php if ( have_rows( 'sponsor3' ) ) : ?>
-									<?php while ( have_rows( 'sponsor3' ) ) :
-										the_row(); ?>
-
-											<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-												<div class="col-auto">
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php
-													$sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-											<?php endif; ?>
-
-									<?php endwhile; ?>
-								<?php endif; ?>
-
-								<?php if ( have_rows( 'sponsor4' ) ) : ?>
-									<?php while ( have_rows( 'sponsor4' ) ) :
-										the_row(); ?>
-
-											<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-												<div class="col">
-
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php
-													$sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-											<?php endif; ?>
-
-									<?php endwhile; ?>
-								<?php endif; ?>
-
-
 
 							<?php endwhile; ?>
-						<?php endif; ?>
+
 
 					</div>
 				</div>
+			<?php endif; ?>
 
 
 
@@ -360,177 +297,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 	</div>
 <?php endif; ?>
 
-<!--
-		<div class="row d-flex justify-content-center">
-			<?php if ( have_rows( 'member1' ) ) : ?>
-				<?php while ( have_rows( 'member1' ) ) :
-					the_row(); ?>
-						<div class="col-auto">
-							<div class="team__cont">
-
-							<?php
-							$zdjecie = get_sub_field( 'zdjecie' );
-							if ( $zdjecie ) : ?>
-								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
-							<?php endif; ?>
-
-							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
-								<a href="<?php echo esc_html( $social_a ); ?>">
-									<span class="team__social1"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
-								<a href="<?php echo esc_html( $social_b ); ?>">
-									<span class="team__social2"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
-								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
-							<?php endif; ?>
-						</div>
-					</div>
-
-				<?php endwhile; ?>
-			<?php endif; ?>
-			<?php if ( have_rows( 'member2' ) ) : ?>
-				<?php while ( have_rows( 'member2' ) ) :
-					the_row(); ?>
-						<div class="col-auto">
-							<div class="team__cont">
-
-							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
-								<a href="<?php echo esc_html( $social_a ); ?>">
-									<span class="team__social1"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
-								<a href="<?php echo esc_html( $social_b ); ?>">
-									<span class="team__social2"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php
-							$zdjecie = get_sub_field( 'zdjecie' );
-							if ( $zdjecie ) : ?>
-								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
-							<?php endif; ?>
-
-
-							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
-								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
-							<?php endif; ?>
-						</div>
-					</div>
-
-				<?php endwhile; ?>
-			<?php endif; ?>
-			<?php if ( have_rows( 'member3' ) ) : ?>
-				<?php while ( have_rows( 'member3' ) ) :
-					the_row(); ?>
-						<div class="col-auto">
-							<div class="team__cont">
-
-							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
-								<a href="<?php echo esc_html( $social_a ); ?>">
-									<span class="team__social1"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
-								<a href="<?php echo esc_html( $social_b ); ?>">
-									<span class="team__social2"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php
-							$zdjecie = get_sub_field( 'zdjecie' );
-							if ( $zdjecie ) : ?>
-								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
-							<?php endif; ?>
-
-
-
-							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
-								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
-							<?php endif; ?>
-						</div>
-					</div>
-
-				<?php endwhile; ?>
-			<?php endif; ?>
-			<?php if ( have_rows( 'member4' ) ) : ?>
-				<?php while ( have_rows( 'member4' ) ) :
-					the_row(); ?>
-						<div class="col-auto">
-							<div class="team__cont">
-
-							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
-								<a href="<?php echo esc_html( $social_a ); ?>">
-									<span class="team__social1"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
-								<a href="<?php echo esc_html( $social_b ); ?>">
-									<span class="team__social2"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php
-							$zdjecie = get_sub_field( 'zdjecie' );
-							if ( $zdjecie ) : ?>
-								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
-							<?php endif; ?>
-
-
-
-							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
-								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
-							<?php endif; ?>
-						</div>
-					</div>
-
-				<?php endwhile; ?>
-			<?php endif; ?>
-			<?php if ( have_rows( 'member5' ) ) : ?>
-				<?php while ( have_rows( 'member5' ) ) :
-					the_row(); ?>
-						<div class="col-auto">
-							<div class="team__cont">
-
-							<?php if ( $social_a = get_sub_field( 'social_a' ) ) : ?>
-								<a href="<?php echo esc_html( $social_a ); ?>">
-									<span class="team__social1"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php if ( $social_b = get_sub_field( 'social_b' ) ) : ?>
-								<a href="<?php echo esc_html( $social_b ); ?>">
-									<span class="team__social2"></span>
-								</a>
-							<?php endif; ?>
-
-							<?php
-							$zdjecie = get_sub_field( 'zdjecie' );
-							if ( $zdjecie ) : ?>
-								<img class="team__photo img-fluid" src="<?php echo esc_url( $zdjecie['url'] ); ?>" alt="<?php echo esc_attr( $zdjecie['alt'] ); ?>" />
-							<?php endif; ?>
-
-
-
-							<?php if ( $nick = get_sub_field( 'nick' ) ) : ?>
-								<span class="team__name"><?php echo esc_html( $nick ); ?></span>
-							<?php endif; ?>
-						</div>
-					</div>
-
-				<?php endwhile; ?>
-			<?php endif; ?>
-
-		</div> -->
 
 
 </section>

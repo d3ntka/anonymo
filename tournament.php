@@ -44,7 +44,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 				</div>
 				<div class="title">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/turniej_logo.svg" alt="">
+					<?php
+					$logo = get_field( 'logo' );
+					if ( $logo ) : ?>
+						<img meta property="og:image" src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_attr( $logo['alt'] ); ?>" />
+					<?php endif; ?>
 				</div>
 
 			</div>
@@ -93,6 +97,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 
 
+
 				<?php if ( have_rows( 'sponsors' ) ) : ?>
 				<div class="col-auto sponsors">
 					<div class="row d-flex justify-content-end">
@@ -107,91 +112,24 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					</div>
 					<div class="row d-flex justify-content-end align-items-center">
-
-
 							<?php while ( have_rows( 'sponsors' ) ) :
 								the_row(); ?>
 
-										<?php if ( have_rows( 'sponsor1' ) ) : ?>
-											<?php while ( have_rows( 'sponsor1' ) ) :
-												the_row(); ?>
+								<?php	$sponsor_logo = get_sub_field( 'sponsor_logo' );
+								if ( $sponsor_logo ) : ?>
+								<div class="col-auto">
+									<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
+									<a href="<?php echo esc_html( $sponsor_link ); ?>"><img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" /></a>
 
+									<?php else: ?>
+										<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
+									<?php endif; ?>
+								</div>
 
-												<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-													<div class="col-auto">
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php $sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-												<?php endif; ?>
-
-											<?php endwhile; ?>
-										<?php endif; ?>
-
-								<?php if ( have_rows( 'sponsor2' ) ) : ?>
-									<?php while ( have_rows( 'sponsor2' ) ) :
-										the_row(); ?>
-
-											<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-												<div class="col-auto">
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php
-													$sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-											<?php endif; ?>
-
-									<?php endwhile; ?>
 								<?php endif; ?>
-
-								<?php if ( have_rows( 'sponsor3' ) ) : ?>
-									<?php while ( have_rows( 'sponsor3' ) ) :
-										the_row(); ?>
-
-											<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-												<div class="col-auto">
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php
-													$sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-											<?php endif; ?>
-
-									<?php endwhile; ?>
-								<?php endif; ?>
-
-								<?php if ( have_rows( 'sponsor4' ) ) : ?>
-									<?php while ( have_rows( 'sponsor4' ) ) :
-										the_row(); ?>
-
-											<?php if ( $sponsor_link = get_sub_field( 'sponsor_link' ) ) : ?>
-												<div class="col">
-
-												<a href="<?php echo esc_html( $sponsor_link ); ?>">
-													<?php
-													$sponsor_logo = get_sub_field( 'sponsor_logo' );
-													if ( $sponsor_logo ) : ?>
-														<img src="<?php echo esc_url( $sponsor_logo['url'] ); ?>" alt="<?php echo esc_attr( $sponsor_logo['alt'] ); ?>" />
-													<?php endif; ?>
-												</a>
-											</div>
-											<?php endif; ?>
-
-									<?php endwhile; ?>
-								<?php endif; ?>
-
-
 
 							<?php endwhile; ?>
+
 
 					</div>
 				</div>
@@ -288,23 +226,25 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 
-<section class="team pb-20 d-none">
+<section class="team pb-10">
 	<span class="let-n--l2"></span>
 	<span class="let-m--l2"></span>
 	<span class="lil-sygnet--l1"></span>
-	<div class="container-fluid pt-30">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-auto aligncenter">
 				<?php if ( $tournament_teams_title = get_field( 'tournament_teams_title' ) ) : ?>
-					<h1 class="glitch" data-text="Drnżyua" id="team">	<?php echo esc_html( $tournament_teams_title ); ?></h1>
+					<h1 class="glitch" data-text="<?php echo esc_html( $tournament_teams_title ); ?>" id="team"><?php echo esc_html( $tournament_teams_title ); ?></h1>
 				<?php endif; ?>
 			</div>
 		</div>
 		<div class="row pb-9">
 			<div class="col-12 col-md-8 aligncenter">
-				<?php if ( $tournament_teams_text = get_field( 'tournament_teams_text' ) ) : ?>
-					<?php echo $tournament_teams_text; ?>
-				<?php endif; ?>
+				<p>
+					<?php if ( $tournament_teams_text = get_field( 'tournament_teams_text' ) ) : ?>
+						<?php echo $tournament_teams_text; ?>
+					<?php endif; ?>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -314,7 +254,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <!-- Slider main container -->
 <?php if ( have_rows( 'tournament_teams_members' ) ) : ?>
-	<div class="swiper-container">
+	<div class="swiper-container_tournament">
 	  <!-- Additional required wrapper -->
 	  <div class="swiper-wrapper">
 	    <!-- Slides -->
@@ -322,7 +262,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				the_row(); ?>
 			    <div class="swiper-slide">
 						<!-- <div class="team__cont"> -->
-						<div class="">
+						<div class="tournament-teams">
 							<div class="tournament-teams__circle">
 								<?php $photo = get_sub_field( 'photo' );
 								if ( $photo ) : ?>
@@ -330,9 +270,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 							<?php endif; ?>
 						</div>
 						<div class="tournament-teams__teamname">
-							<?php if ( $team_name = get_sub_field( 'team_name' ) ) : ?>
-								<span class="primary">Team</span><?php echo esc_html( $team_name ); ?>
-							<?php endif; ?>
+							<div class="tournament-teams__teamname--team">Team</div>
+							<div class="tournament-teams__teamname--name">
+								<?php if ( $team_name = get_sub_field( 'team_name' ) ) : ?>
+									<?php echo esc_html( $team_name ); ?>
+								<?php endif; ?>
+							</div>
 						</div>
 					</div>
 
@@ -365,27 +308,31 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section>
 
 
-<section id="tournament-twitch" class="tournament-twitch d-none">
+<section id="tournament-twitch" class="tournament-twitch">
 	<div class="container-fluid">
-		<div class="row about__sectionA">
+		<div class="row about__info">
 
 			<!-- <div class="col-md-10 col-lg-8 col-xl-6"> -->
-			<div class="col-md-6">
-		  	<div class="tournament-twitch__sectionA--text mx-auto my-auto">
+			<div class="col-12 col-xl-5 align-items-center justify-content-between">
+		  	<div class="tournament-twitch__info--text mx-auto my-auto">
 					<?php if ( $tournament_twitch_title = get_field( 'tournament_twitch_title' ) ) : ?>
 						<h1 class="glitch" data-text="<?php echo esc_html( $tournament_twitch_title ); ?>"><?php echo esc_html( $tournament_twitch_title ); ?></h1>
 					<?php endif; ?>
 						<p><?php if ( $tournament_twitch_text = get_field( 'tournament_twitch_text' ) ) : ?>
 								<?php echo $tournament_twitch_text; ?>
 							<?php endif; ?></p>
-						<br><br>
 						<?php if ( have_rows( 'tournament_twitch_link' ) ) : ?>
 							<?php while ( have_rows( 'tournament_twitch_link' ) ) :
 								the_row(); ?>
 
 								<?php if (( $link_name = get_sub_field( 'link_name' ) ) && ( $link_target = get_sub_field( 'link_target' ) ) ): ?>
 
-									<a href="<?php echo esc_html( $link_target ); ?>" class="links"><span><?php echo esc_html( $link_name ); ?></span></a>
+
+									<?php $icon = get_sub_field( 'icon' );
+									if ( $icon ) : ?>
+										<img src="<?php echo esc_url( $icon['url'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" />
+									<?php endif; ?>
+									<a href="<?php echo esc_html( $link_target ); ?>" class="tournament-twitch__info--link"><span><?php echo esc_html( $link_name ); ?></span></a>
 
 								<?php endif; ?>
 
@@ -394,21 +341,32 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 
 			</div>
-			<div class="col">
-				<span class="let-a--l1"></span>
+			<div class="col-12 col-xl-7">
+				<!-- <span class="let-a--l1"></span>
 				<span class="let-o--l1"></span>
-				<span class="let-n--l1"></span>
+				<span class="let-n--l1"></span> -->
 				<span class="red-square--l1"></span>
-				<span class="red-square--l2"></span>
-				<span class="elem_6x--loc2"></span>
+				<!-- <span class="red-square--l2"></span> -->
+				<span class="elem_6x--loc2-tourn"></span>
 
-
-<?php // TODO: twitch embed ?>
-				<div class="about__bg--1">
-
+				<div class="tournament-twitch__info--twitch-embed-cont">
+				<div class="tournament-twitch__info--twitch-embed" id="twitch-embed"></div>
 				</div>
+				<!-- Load the Twitch embed JavaScript file -->
+		    <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
+		    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+				<?php if ( $tournament_twitch_channel = get_field( 'tournament_twitch_channel' ) ) : ?>
 
+		    <script type="text/javascript">
+		      new Twitch.Embed("twitch-embed", {
+		        width: "100%",
+		        height: "100%",
+		        channel: "<?php echo esc_html( $tournament_twitch_channel ); ?>",
+						layout: "video",
+		      });
+		    </script>
+			<?php endif; ?>
 
 
 			</div>
