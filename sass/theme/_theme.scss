@@ -1226,6 +1226,11 @@ svg.spinner {
       width: 137.6rem;
       height: 77.4rem;
     }
+    .title img{
+      @include media-breakpoint-down(xs){
+        max-width: 100%;
+      }
+    }
   }
 
 

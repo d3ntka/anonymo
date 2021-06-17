@@ -146,7 +146,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 <section class="tournament-about">
-	<div class="container-fluid tournament-about--wrapper" id="tournament-about">
+	<div class="container-fluid tournament-about--wrapper" id="about">
 		<span class="let-a--l2"></span>
 		<!-- <span class="let-n--l3"></span> -->
 		<span class="let-o--l3"></span>
@@ -301,10 +301,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section>
 
 <!-- TOURNAMENT BRACKET -->
-<section class="d-none">
-	<?php if ( $bracket_embed = get_field( 'bracket_embed' ) ) : ?>
-		<?php echo $bracket_embed; ?>
-	<?php endif; ?>
+<section class="bracket mt-5">
+	<span id="streamers"></span>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-auto aligncenter">
+					<h1 class="glitch" data-text="HARMONOGRAM">HARMONOGRAM</h1>
+			</div>
+		</div>
+	<div class="row d-flex justify-content-around">
+		<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+			<?php if ( $bracket_embed = get_field( 'bracket_embed' ) ) : ?>
+				<?php echo $bracket_embed; ?>
+			<?php endif; ?>
+		</div>
+		<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+			<?php if ( $bracket_embed_2 = get_field( 'bracket_embed_2' ) ) : ?>
+				<?php echo $bracket_embed_2; ?>
+			<?php endif; ?>
+		</div>
+	</div>
 </section>
 
 
