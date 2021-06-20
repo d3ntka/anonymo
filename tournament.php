@@ -309,6 +309,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<h1 class="glitch" data-text="HARMONOGRAM">HARMONOGRAM</h1>
 			</div>
 		</div>
+		<?php if ( $harmonogram_text = get_field( 'harmonogram_text' ) ) : ?>
+			<div class="row">
+				<div class="col-12 col-md-10 col-lg-8 aligncenter">
+					<p>
+							<?php echo $harmonogram_text; ?>
+					</p>
+				</div>
+			</div>
+		<?php endif; ?>
 	<div class="row d-flex justify-content-around">
 		<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
 			<?php if ( $bracket_embed = get_field( 'bracket_embed' ) ) : ?>
