@@ -517,6 +517,12 @@ a{
 // opacity: 0.2;
 //
 // }
+.titleBG__wrapper{
+  position: absolute;
+}
+// .titleBG__glitch{
+//   filter: url(#glitch);
+// }
 
 .sygnet--wrapper{
   position: absolute;
@@ -1227,10 +1233,21 @@ svg.spinner {
       height: 77.4rem;
     }
     .title img{
+      filter: url("#glitch");;
       @include media-breakpoint-down(xs){
         max-width: 100%;
+        transition-duration: 0.0s;
+        transition: none;
       }
     }
+    & .titleBG__wrapper{
+      @include media-breakpoint-down(sm){
+        transform: scale(0.7) translateX(-30%);
+      }
+    }
+    // & .titleBG__glitch{
+
+    // }
   }
 
 
@@ -1431,3 +1448,12 @@ svg.spinner {
     }
   }
 }
+
+.bracket{
+  &__cont{
+    max-height: 1100px;
+    padding-bottom: 10rem;
+    overflow-y:auto;
+  }
+}
+

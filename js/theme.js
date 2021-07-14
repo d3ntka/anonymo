@@ -7150,3 +7150,28 @@ const swiperTournament = new Swiper('.swiper-container_tournament', {
     hide: false
   }
 });
+jQuery(function () {
+  let didScroll = false;
+  let parallaxTitles = document.querySelectorAll('.parallax-title');
+  var w = window.innerWidth;
+
+  const scrollInProgress = () => {
+    didScroll = true;
+  };
+
+  const raf = () => {
+    if (w < 768) {
+      if (didScroll) {
+        parallaxTitles.forEach((element, index) => {
+          element.style.transform = "translateX(" + window.scrollY / 8 + "%)";
+        });
+        didScroll = false;
+      }
+    }
+
+    requestAnimationFrame(raf);
+  };
+
+  requestAnimationFrame(raf);
+  window.addEventListener('scroll', scrollInProgress);
+});

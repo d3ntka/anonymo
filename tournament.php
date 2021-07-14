@@ -34,13 +34,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 			<div class="main_title d-flex  aligncenter">
 				<div class="sygnet--wrapper">
-					<div class="glitch_sygnet">
+					<!-- <div class="glitch_sygnet"> -->
 						<?php
 							$postaci_bg = get_field( 'postaci_bg' );
 							if ( $postaci_bg ) : ?>
 							<div class="tournament-hero__charactersBG" style="background-image:url('<?php echo esc_url( $postaci_bg['url'] ); ?>');"></div>
 						<?php endif; ?>
-					</div>
+					<!-- </div> -->
 
 				</div>
 				<div class="title">
@@ -225,8 +225,47 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 
+<!-- TOURNAMENT BRACKET -->
+<section class="bracket mt-5">
+	<span id="streamers"></span>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-auto aligncenter">
+				<h1 class="glitch" data-text="Finały">Finały</h1>
+			</div>
+		</div>
+	</div>
+	<?php 
+	$bracket_img = get_field('bracket_img');
+	if( !empty( $bracket_img ) ): ?>
+		<div class="py-5">
+			<img src="<?php echo esc_url($bracket_img['url']); ?>" alt="<?php echo esc_attr($bracket_img['alt']); ?>" />
+		</div>
+	<?php endif; ?>
+	<!-- <div class="container-fluid pt-5">
+		<div class="row">
+			<div class="col-auto aligncenter">
+				<h1 class="glitch" data-text="FAZA GRUPOWA">FAZA GRUPOWA</h1>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-around">
+			<?php if ( $bracket_embed = get_field( 'bracket_embed' ) ) : ?>
+				<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+					<?php echo $bracket_embed; ?>
+				</div>
+			<?php endif; ?>
+			<?php if ( $bracket_embed_2 = get_field( 'bracket_embed_2' ) ) : ?>
+				<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+					<?php echo $bracket_embed_2; ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div> -->
+</section>
 
-<section class="team pb-10">
+
+<!-- TEAM -->
+<section class="team pt-5 pb-10">
 	<span class="let-n--l2"></span>
 	<span class="let-m--l2"></span>
 	<span class="lil-sygnet--l1"></span>
@@ -238,17 +277,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<?php endif; ?>
 			</div>
 		</div>
-		<div class="row pb-9">
-			<div class="col-12 col-md-8 aligncenter">
-				<p>
-					<?php if ( $tournament_teams_text = get_field( 'tournament_teams_text' ) ) : ?>
+		<?php if ( $tournament_teams_text = get_field( 'tournament_teams_text' ) ) : ?>
+			<div class="row pb-9">
+				<div class="col-12 col-md-8 aligncenter">
+					<p>
 						<?php echo $tournament_teams_text; ?>
-					<?php endif; ?>
-				</p>
+					</p>
+				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 	</div>
-
 
 <!-- TEAM SLIDER -->
 
@@ -300,37 +338,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 </section>
 
-<!-- TOURNAMENT BRACKET -->
-<section class="bracket mt-5">
-	<span id="streamers"></span>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-auto aligncenter">
-					<h1 class="glitch" data-text="HARMONOGRAM">HARMONOGRAM</h1>
-			</div>
-		</div>
-		<?php if ( $harmonogram_text = get_field( 'harmonogram_text' ) ) : ?>
-			<div class="row">
-				<div class="col-12 col-md-10 col-lg-8 aligncenter">
-					<p>
-							<?php echo $harmonogram_text; ?>
-					</p>
-				</div>
-			</div>
-		<?php endif; ?>
-	<div class="row d-flex justify-content-around">
-		<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
-			<?php if ( $bracket_embed = get_field( 'bracket_embed' ) ) : ?>
-				<?php echo $bracket_embed; ?>
-			<?php endif; ?>
-		</div>
-		<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
-			<?php if ( $bracket_embed_2 = get_field( 'bracket_embed_2' ) ) : ?>
-				<?php echo $bracket_embed_2; ?>
-			<?php endif; ?>
-		</div>
-	</div>
-</section>
 
 
 <section id="tournament-twitch" class="tournament-twitch">
