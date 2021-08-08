@@ -1,48 +1,56 @@
 // Add your JS customizations here
 
-const swiper = new Swiper('.swiper-container', {
+function openTeam(evt, teamName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(teamName).style.display = "block";
+  evt.currentTarget.className += " active";
+} 
+
+
+
+
+const swiperTeams = new Swiper('#swiper-teams', {
   // Optional parameters
-  // direction: 'vertical',
   // loop: true,
   slidesPerView: 1,
+  containerModifierClass:	'swiper-container-teams-',
+  thumbs: {
+    swiper: swiperTeamsThumbs,
+    slideThumbActiveClass: 'swiper-slide-thumb-active',
+    thumbsContainerClass: 'swiper-container-thumbs',
+  },
   // spaceBetween: 10,
 
-  breakpoints: {
-    // when window width is >= 480px
-    480: {
-      slidesPerView: 2,
-      // spaceBetween: 20
-    },
-    // when window width is >= 640px
-    680: {
-      slidesPerView: 3,
-      // spaceBetween: 20
-    },
-    1100: {
-      slidesPerView: 4,
-      // spaceBetween: 20
-    },
-    1400: {
-      slidesPerView: 5,
-      // spaceBetween: 20
-    },
-
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+    // Navigation arrows
+  // navigation: {
+  //   nextEl: '.swiper-button-next',
+  //   prevEl: '.swiper-button-prev',
+  // },
 
   // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-    dragSize: 28,
-    hide: false,
-  },
+  // scrollbar: {
+  //   el: '.swiper-scrollbar',
+  //   draggable: true,
+  //   dragSize: 28,
+  //   hide: false,
+  // },
 });
+
 const swiperTournament = new Swiper('.swiper-container_tournament', {
   // Optional parameters
   // loop: true,

@@ -529,26 +529,25 @@ a{
 }
 $sygnet-move: 5rem;
 .sygnet_bg{
+  background: url("../img/sygnet-img.png");
   // mask: url("../img/sygnet.svg");
-  mask: url("../img/sygnet.svg");
   width:66rem;
   height:50rem;
+  background-size: contain;
+  background-repeat: no-repeat;
   // mask-size: contain;
-  mask-size: contain;
-  // background-color: $white;
   // mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
   // position: absolute;
   z-index: 100;
   opacity: 1;
-  // background-color: $white;
-  background-color: #3A3A3A;
+  // background-color: #3A3A3A;
   margin-top: $sygnet-move;
+  filter: brightness(0.23);
   @include media-breakpoint-down(sm) {
     width:60rem;
     height:46rem;
-}
   }
+}
 
 .sygnet_bg_white{
   @extend .sygnet_bg;
@@ -606,7 +605,7 @@ $about-section-height: 57rem;
 .about{
   &__sectionA{
     position: relative;
-    min-height: $about-section-height;
+    // min-height: $about-section-height;
     &--text{
       padding-top: 12rem;
       @include media-breakpoint-up(xl){
@@ -616,7 +615,7 @@ $about-section-height: 57rem;
   }
   &__sectionB{
     position: relative;
-    min-height: $about-section-height;
+    // min-height: $about-section-height;
     &--text{
       padding-top: 10rem;
       @include media-breakpoint-up(md){
@@ -677,6 +676,8 @@ $about-section-height: 57rem;
 .team{
   position: relative;
   // min-height: 90rem;
+  padding-top: 30rem;
+
   &__cont{
     position: relative;
     width: 26rem;
@@ -731,7 +732,46 @@ $about-section-height: 57rem;
 }
 
 // SLIDER
-.swiper-container, .swiper-container_tournament{
+#swiper-teamsThumbs.swiper-container{
+  padding-top: 3rem;
+  border-bottom: 1px solid #fff;
+  text-align: center;
+    .swiper-wrapper{
+      align-items: flex-end;
+    }
+    .team_name{
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.13;
+      color: rgba(255, 255, 255, 0.3);
+      width: 100%;
+      padding-bottom: 1.4rem;
+      // white-space: nowrap;
+      cursor: pointer;
+    }
+    .vert-line{
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      height: 1.9rem;
+      transform: translateX(50%);
+    }
+    .swiper-slide-thumb-active{
+      .team_name{
+        color: rgba(255, 255, 255, 1);
+      }
+      .vert-line{
+        border-left: 1px solid rgba(255, 255, 255, 1);
+      }
+    }
+}
+#swiper-teams.swiper-container{
+  // padding: 3rem 0;
+}
+.swiper-team-container{
+  padding: 5rem 0;
+}
+
+.swiper-container_tournament{
   padding: 10rem 0;
 }
 .swiper-container_tournament{
