@@ -677,7 +677,9 @@ $about-section-height: 57rem;
   position: relative;
   // min-height: 90rem;
   padding-top: 30rem;
-
+  p{
+    text-align: center;
+  }
   &__cont{
     position: relative;
     width: 26rem;

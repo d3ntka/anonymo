@@ -255,7 +255,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <?php while ( have_rows( 'team' ) ) :
 		the_row(); 
 		$team_name = get_sub_field( 'team_name' ); ?>
-            <?php if ( $team_name ) : ?>
+            <?php if ( $team_name ) : 
+                // $team_name = preg_replace("/[^a-zA-Z]/", "", $team_name_tmp);
+
+                ?>
             <div class="swiper-slide">
                 <?php endif; ?>
                 <!-- Slider main container -->
